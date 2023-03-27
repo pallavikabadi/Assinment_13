@@ -1,8 +1,17 @@
  package com.bridggelabz;
 
 public class Generics<T extends Comparable<T>> {
-    public void FindMaxString(String a,String b,String c){
-        String max=a;
+    T x,y,z;
+    public Generics(T x, T y, T z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+    public T FindMax(){
+        return Generics.FindMax(x,y,z);
+    }
+    public static <T extends Comparable<T>>T FindMax(T a, T b, T c){
+        T max=a;
         if((b.compareTo(max))>0)
         {
             max=b;
@@ -11,18 +20,15 @@ public class Generics<T extends Comparable<T>> {
             max=c;
         }
         System.out.println("Maximum of "+a+ ", "+b+" and "+c+ " is: "+max);
+        return max;
     }
 
     public static void main(String[] args) {
-        Generics genericsProgram = new Generics();
+        Integer a=22,b=4,c=6;
+        Float d = 12.3F ,e=5.9F,f=2.3F;
         String g="Anjali",h="Rawke",i="Zain";
-        // test case 1 :- Given Max Number at 1st Position return the Same Number
-        genericsProgram.FindMaxString(i,h,g);
-        // test case 2 :- Given Max Number at 2nd Position return the Same Number
-        genericsProgram.FindMaxString(h,i,g);
-        // test case 3 :- Given Max Number at 3rd Position return the Same Number
-        genericsProgram.FindMaxString(g,h,i);
+        new Generics<Integer>(a,b,c).FindMax();
+        new Generics<Float>(d,e,f).FindMax();
+        new Generics<String>(g,h,i).FindMax();
     }
-    }
-
 }
